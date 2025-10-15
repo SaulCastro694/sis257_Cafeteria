@@ -4,8 +4,6 @@
 La Cafetería “Sabor y Aroma” es un negocio dedicado a la venta de café, bebidas calientes y productos de pastelería.  
 Este sistema permitirá gestionar los productos, empleados, clientes y las ventas diarias de manera eficiente.
 
----
-
 ## Entidades principales
 
 ### PRODUCTO
@@ -32,7 +30,7 @@ Este sistema permitirá gestionar los productos, empleados, clientes y las venta
 - teléfono
 - correo
 
-### 🧾 VENTA
+### VENTA
 **Atributos:**
 - idVenta (PK)
 - fecha
