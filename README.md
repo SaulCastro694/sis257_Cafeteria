@@ -1,4 +1,4 @@
-# Modelo Entidad–Relación (MER) – Cafetería ☕
+# Modelo Entidad–Relación (MER) – Cafetería 
 
 ## Descripción del negocio
 La Cafetería “Sabor y Aroma” es un negocio dedicado a la venta de café, bebidas calientes y productos de pastelería.  
