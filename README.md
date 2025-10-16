@@ -8,7 +8,7 @@ Este sistema permitirá gestionar los productos, empleados, clientes y las venta
 
 ### PRODUCTO
 **Atributos:**
-- idProducto (PK)
+- id (PK)
 - nombre
 - categoría
 - precio
@@ -17,7 +17,7 @@ Este sistema permitirá gestionar los productos, empleados, clientes y las venta
 
 ### EMPLEADO
 **Atributos:**
-- idEmpleado (PK)
+- id (PK)
 - nombre
 - cargo
 - salario
@@ -25,14 +25,14 @@ Este sistema permitirá gestionar los productos, empleados, clientes y las venta
 
 ### CLIENTE
 **Atributos:**
-- idCliente (PK)
+- id (PK)
 - nombre
 - teléfono
 - correo
 
 ### VENTA
 **Atributos:**
-- idVenta (PK)
+- id (PK)
 - fecha
 - total
 - idCliente (FK)
@@ -40,7 +40,7 @@ Este sistema permitirá gestionar los productos, empleados, clientes y las venta
 
 ### DETALLEVENTA
 **Atributos:**
-- idDetalle (PK)
+- id (PK)
 - cantidad
 - precioUnitario
 - subtotal
