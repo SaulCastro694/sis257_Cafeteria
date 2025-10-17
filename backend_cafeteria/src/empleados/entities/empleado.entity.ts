@@ -1,8 +1,10 @@
+import { Venta } from 'src/venta/entities/venta.entity';
 import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -25,4 +27,7 @@ export class Empleado {
   fechaModificacion: Date;
   @DeleteDateColumn({ name: 'fecha_eliminacion' })
   fechaEliminacion: Date;
+
+  @ManyToOne(() => Venta, (venta) => venta.empleados)
+  ventas: Venta[];
 }
