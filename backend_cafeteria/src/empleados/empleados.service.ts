@@ -1,4 +1,4 @@
-import { ConflictException, Injectable } from '@nestjs/common';
+import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateEmpleadoDto } from './dto/create-empleado.dto';
 import { UpdateEmpleadoDto } from './dto/update-empleado.dto';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -7,10 +7,8 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class EmpleadosService {
-  constructor(
-    @InjectRepository(Empleado)
-    private empleadosRepository: Repository<Empleado>,
-  ) {}
+  constructor(@InjectRepository(Empleado) private empleadosRepository: Repository<Empleado>) {}
+
   async create(createEmpleadoDto: CreateEmpleadoDto): Promise<Empleado> {
     let empleado = await this.empleadosRepository.findOneBy({
       nombre: createEmpleadoDto.nombre.trim(),
@@ -19,7 +17,8 @@ export class EmpleadosService {
       fechaIngreso: createEmpleadoDto.fechaIngreso,
     });
     if (empleado) throw new ConflictException('El empleado ya existe');
-    empleado = this.empleadosRepository.create(createEmpleadoDto);
+    empleado = new Empleado();
+    Object.assign(empleado, createEmpleadoDto);
     return this.empleadosRepository.save(empleado);
   }
 
@@ -29,7 +28,7 @@ export class EmpleadosService {
 
   async findOne(id: number): Promise<Empleado> {
     const empleado = await this.empleadosRepository.findOneBy({ id });
-    if (!empleado) throw new ConflictException('El empleado no existe');
+    if (!empleado) throw new NotFoundException('El empleado no existe');
     return empleado;
   }
 
