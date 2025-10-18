@@ -1,38 +1,35 @@
+import { Venta } from 'src/venta/entities/venta.entity';
 import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('productos')
-export class Producto {
+@Entity('Clientes')
+export class Cliente {
   @PrimaryGeneratedColumn('identity')
   id: number;
 
   @Column('varchar', { length: 100 })
   nombre: string;
 
-  @Column('varchar', { length: 50 })
-  categoria: string;
+  @Column('varchar', { length: 20 })
+  telefono: string;
 
-  @Column('decimal', { precision: 10, scale: 2 })
-  precio: number;
-
-  @Column('int')
-  stock: number;
-
-  @Column('varchar', { length: 2000 })
-  descripcion: string;
+  @Column('varchar', { length: 200 })
+  correo: string;
 
   @CreateDateColumn({ name: 'fecha_creacion' })
   fechaCreacion: Date;
-
   @UpdateDateColumn({ name: 'fecha_modificacion' })
   fechaModificacion: Date;
-
   @DeleteDateColumn({ name: 'fecha_eliminacion' })
   fechaEliminacion: Date;
+
+  @OneToMany(() => Venta, (venta) => venta.cliente)
+  ventas: Venta[];
 }
